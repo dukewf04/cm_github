@@ -1,0 +1,31 @@
+ {% load static %}
+<nav id="sidebar">
+    <div class="p-4 pt-5">
+        <!-- <a href="#" class="img logo rounded-circle mb-5" id="avatar" style="background-image: url({% static 'main/img/noPhoto.jpg' %});"></a> -->
+        <a href="#" class="img logo rounded-circle mb-5" id="avatar" style="background-image: url({{user_photo.image.url}});"></a>
+        <form method="POST" action="" enctype="multipart/form-data" autocomplete="off" name="uploader" hidden="true">
+            {% csrf_token %}
+            <input name="userfile" type="file" id="input_loadfile"/>
+            <button name="btn-load" type="submit"  id="btn_loadfile">Загрузить</button>
+        </form>
+        <button type="button" style="width: 20px; height: 20px; padding: 0px" data-toggle="tooltip" data-placement="top"  title="Добавить раздел" class="btn btn-outline-warning btn-sm" onclick="addSection()">+</button>
+        <ul class="list-unstyled components mb-5" id="sidebar1">
+            {% for el_s in sect %}
+                {% if el_s.userInfo == request.user %}
+                     <li id="li{{el_s.id}}"><a href="#i{{el_s.id}}" id=a{{el_s.id}} onClick=get_section_ID(this) data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" oncontextmenu=get_sect_id(this)>{{el_s.name}}</a>
+                         <ul class="collapse list-unstyled" data-parent=#sidebar1 id="i{{el_s.id}}">
+                             {% for el_ss in subsect %}
+                                {% if el_s.id == el_ss.section_id %}
+                                    <li class=leftsub id=u{{el_ss.id}}>
+                                        <a href="#" id=aa{{el_ss.id}} class='aaclass' onClick=get_subsection_ID(this) oncontextmenu=get_sect_id(this)>{{el_ss.name}}</a>
+                                    </li>
+                                 {% endif  %}
+                             {% endfor %}
+                         </ul>
+                     </li>
+                {% endif %}
+            {% endfor %}
+       </ul>
+        <div class="footer"><p>Чат мастер</p></div>
+    </div>
+</nav>

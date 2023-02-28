@@ -1,0 +1,39 @@
+.leftmenu{
+    float: left;
+    min-width: 300px;
+    max-width: 500px;
+    background: #181818;
+    width: 15%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+}
+
+.leftsub{
+    padding-left: 5px;
+    background-color: rgba(105, 105, 105, 0.2);
+    border-radius: 0 6px;
+    margin: 1px;
+}
+
+.list-unstyled a:hover{
+    transform: scale(1.03);
+}
+
+li.list-group-item:hover{
+    background-color: rgba(247, 247, 247, 0.2);
+}
+
+li{
+    list-style-type: none;
+}
+
+.list-group-item{
+    color: black;
+}
+
+
+/*div{
+    outline: 1px solid #000;
+}*/
